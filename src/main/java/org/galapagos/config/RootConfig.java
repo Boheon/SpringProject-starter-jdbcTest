@@ -10,11 +10,13 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
 @Configuration
+@ComponentScan(basePackages={"org.galapagos.service", "org.galapagos.controller"})
 @MapperScan(basePackages = {"org.galapagos.mapper"})
 public class RootConfig {
 

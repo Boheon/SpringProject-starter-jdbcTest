@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap');
+
+*{
+    font-family: 'Black Han Sans'
+}
+
+.avatar-sm{
+    width:  24px;
+    height: 24px;
+    border-radius: 50%;
+}
+
+.jumbotron{
+
+}
