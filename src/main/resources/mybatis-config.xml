@@ -7,8 +7,10 @@
     <settings>
         <setting name="mapUnderscoreToCamelCase" value="true"/>
     </settings>
-    
+
     <typeAliases>
         <package name="org.galapagos.domain"/>
     </typeAliases>
+
+
 </configuration>

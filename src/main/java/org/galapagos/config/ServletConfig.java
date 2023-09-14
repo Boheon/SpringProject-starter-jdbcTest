@@ -19,6 +19,11 @@ import java.io.IOException;
 //@ComponentScan(basePackages = {"org.galapagos.mapper"})
 public class ServletConfig implements WebMvcConfigurer {
 
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/resources/**")
+                .addResourceLocations("/resources/");
+    }
 
 
     @Override
@@ -30,11 +35,7 @@ public class ServletConfig implements WebMvcConfigurer {
         registry.viewResolver(bean);
     }
 
-    @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/resources/**")
-                .addResourceLocations("/resources/");
-    }
+
 
     //COMMON-UPLOAD 라이브러리 사용시
     @Bean(name = "multipartResolver")

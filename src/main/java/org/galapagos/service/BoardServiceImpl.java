@@ -3,6 +3,7 @@ package org.galapagos.service;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 import org.galapagos.domain.BoardVO;
+import org.galapagos.domain.Criteria;
 import org.galapagos.mapper.BoardMapper;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +18,12 @@ public class BoardServiceImpl implements BoardService {
 
 
     @Override
+    public int getTotal(Criteria criteria) {
+        log.info("get total count");
+        return mapper.getTotalCount(criteria);
+    }
+
+    @Override
     public void register(BoardVO board) {
         log.info("register......." + board);
         mapper.insertSelectKey(board);
@@ -24,7 +31,7 @@ public class BoardServiceImpl implements BoardService {
 
     @Override
     public BoardVO get(Long bno) {
-        log.info("get...............");
+        log.info("get..............." + bno);
 
         return mapper.read(bno);
     }
@@ -42,9 +49,8 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    public List<BoardVO> getList()
-    {
-        log.info("getList................");
-        return mapper.getList();
+    public List<BoardVO> getList(Criteria criteria) {
+        log.info("get List with criteria " + criteria);
+        return mapper.getListWithPaging(criteria);
     }
 }
