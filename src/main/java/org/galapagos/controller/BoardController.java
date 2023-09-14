@@ -49,16 +49,22 @@ public class BoardController {
     }
 
     @GetMapping({"/get", "/modify"})
-    public void get(@RequestParam("bno") Long bno, @ModelAttribute("cri") Criteria cri, Model model) {
+    public void get(@RequestParam("bno") Long bno,
+                    @ModelAttribute("cri") Criteria cri,
+                    Model model) {
+
         log.info("/get or modify");
         model.addAttribute("board", boardService.get(bno));
     }
 
     @PostMapping("/modify")
-    public String modify(BoardVO board, @ModelAttribute("cri") Criteria cri, RedirectAttributes rttr) {
-        log.info("modify:" + board);
+    public String modify(BoardVO board,
+                         @ModelAttribute("cri") Criteria cri,
+                         RedirectAttributes rttr) {
+        log.info("modify : " + board);
 
         if (boardService.modify(board)) {
+            //Flash --> 1회성
             rttr.addFlashAttribute("result", "success");
             rttr.addAttribute("bno", board.getBno());
             rttr.addAttribute("pageNum", cri.getPageNum());
@@ -68,7 +74,9 @@ public class BoardController {
     }
 
     @PostMapping("/remove")
-    public String remove(@RequestParam("bno") Long bno, @ModelAttribute("cri") Criteria cri, RedirectAttributes rttr) {
+    public String remove(@RequestParam("bno") Long bno,
+                         @ModelAttribute("cri") Criteria cri,
+                         RedirectAttributes rttr) {
 
         log.info("remove..." + bno);
         if (boardService.remove(bno)) {

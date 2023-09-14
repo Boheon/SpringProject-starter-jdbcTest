@@ -31,6 +31,8 @@
         <form role="form" method="post">
             <input type="hidden" name="pageNum" value="${cri.pageNum}"/>
             <input type="hidden" name="amount" value="${cri.amount}"/>
+            <input type="hidden" name="type" value="${pageMaker.cri.type}"/>
+            <input type="hidden" name="keyword" value="${pageMaker.cri.keyword}"/>
             <input type="hidden" name="bno" value="${board.bno}">
 
             <div class="form-group">
@@ -63,6 +65,8 @@
     <input type="hidden" id="bno" name="bno" value="${board.bno}"/>
     <input type="hidden" name="pageNum" value="${cri.pageNum}"/>
     <input type="hidden" name="amount" value="${cri.amount}"/>
+    <input type="hidden" name="type" value="${pageMaker.cri.type}"/>
+    <input type="hidden" name="keyword" value="${pageMaker.cri.keyword}"/>
 </form>
 
 <%@include file="../layouts/footer.jsp" %>
