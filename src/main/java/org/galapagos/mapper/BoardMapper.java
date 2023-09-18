@@ -8,11 +8,13 @@ import org.galapagos.domain.Criteria;
 import java.util.List;
 
 public interface BoardMapper {
-//    xml로 대체
-//    @Select("select * from tbl_board")
+
 
     public int getTotalCount(Criteria cri);
 
+
+    //    xml로 대체
+//    @Select("select * from tbl_board")
     List<BoardVO> getList();
 
     List<BoardVO> getListWithPaging(Criteria cri);

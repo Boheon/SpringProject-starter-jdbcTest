@@ -12,28 +12,35 @@ public class Criteria {
 
     private int pageNum;
     private int amount;
+    private String keyword;
+    private String type;
 
-    public Criteria(){this(1, 10);}
-    public Criteria(int pageNum){this(pageNum, 10);}
+    public Criteria() {
+        this(1, 10);
+    }
+
+    public Criteria(int pageNum) {
+        this(pageNum, 10);
+    }
 
     public Criteria(int pageNum, int amount) {
         this.pageNum = pageNum;
         this.amount = amount;
     }
 
-    public int getOffset(){
+    public int getOffset() {
         return (pageNum - 1) * amount;
     }
 
-    public String getQueryList(){
+    public String getQueryList() {
         UriComponentsBuilder builder = UriComponentsBuilder
                 .fromPath("")
                 .queryParam("pageNum", pageNum)
-                .queryParam("amount", amount);
-
-//              .queryParam("type", type)
-//              .queryParam("keyword", keyword)
+                .queryParam("amount", amount)
+                .queryParam("type", type)
+                .queryParam("keyword", keyword);
 
         return builder.toUriString();
     }
+
 }

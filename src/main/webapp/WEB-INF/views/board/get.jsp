@@ -87,4 +87,41 @@
     <input type="hidden" name="keyword" value="${pageMaker.cri.keyword}"/>
 </form>
 
+<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cc0a7b1e9e5540c4e6b8cf4518b1062d" &libraries="services"></script>
+<script>
+    let mapContainer = document.getElementById('map');
+    //  지도 제어 코딩
+    let mapContainer = document.getElementById('map'); // 지도를 표시할 div
+    let mapOption = {
+        center: new kakao.maps.LatLng(33.450701, 126.570667), // 중심좌표
+        level: 3 // 지도의 확대 레벨
+    };
+    let map = new kakao.maps.Map(mapContainer, mapOption);
+
+    // 마커가 표시될 위치
+    var markerPosition = new kakao.maps.LatLng(33.450701, 126.570667);
+    // 마커 생성
+    var marker = new kakao.maps.Marker({
+        position: markerPosition
+    });
+    // 마커가 지도 위에 표시되도록 설정
+    marker.setMap(map)
+
+    let geocoder = new kakao.maps.services.Geocoder();
+    let address = '제주특별자치도 제주시 첨단로 242';
+    geocoder.addressSearch(address, function (result, status){
+        if (status === kakao.maps.services.Status.OK) {
+// 배열의 첫번째 위치로 이동
+            var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+            var marker = new kakao.maps.Marker({
+                map: map,
+                position: coords
+            });
+// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+            map.setCenter(coords);
+        }
+    });
+
+</script>
+
 <%@include file="../layouts/footer.jsp" %>
